@@ -1,0 +1,19 @@
+# Deep Learning Frameworks
+torch>=1.2.0
+torchvision>=0.4.0a0+9232c4a
+pytorch_lightning >= 0.6.0
+# Analysis
+captum>=0.1.0
+visdom>=0.1.8.9
+thop>=0.0.31.post1909230639
+# Computer Vision
+opencv_contrib_python>=4.1.0.25
+Pillow>=6.2.1
+# Math Lib
+numpy>=1.16.4
+matplotlib>=3.1.1
+# Misc
+ipython>=7.9.0
+pynvml>=8.0.3
+nvidia_ml_py3>=7.352.0
+pycocotools>=2.0.0
