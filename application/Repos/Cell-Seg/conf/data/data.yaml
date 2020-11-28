@@ -1,0 +1,4 @@
+# @package _group_
+folder_path: /home/aistudio/work/bdci/data
+num_workers: 4
+batch_size: 32

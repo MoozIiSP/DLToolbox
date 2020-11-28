@@ -1,0 +1,12 @@
+# @package _group_
+backbone:
+  class_name: src.models.unet.UNet
+  params:
+    in_channels: 3
+    num_classes: 7
+    depth: 5
+    wf: 6
+    padding: True
+    batch_norm: False
+    up_mode: 'upconv'
+

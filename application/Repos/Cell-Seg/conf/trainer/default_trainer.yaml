@@ -1,0 +1,4 @@
+# @package _group_
+gpus: 1
+precision: 16
+max_epochs: 50

@@ -1,18 +1,17 @@
-import random
-
-from torchvision.datasets.vision import VisionDataset
-import torchvision.transforms.functional as F
-import torchvision.transforms as T
-from PIL import Image
-from PIL import ImageFilter
-from PIL import ImageDraw
-import numpy as np
 import os
 import os.path
-import torch
+import random
+from typing import Optional, Tuple
 
 import matplotlib.pyplot as plt
-from pycocotools.mask import toBbox, encode
+import numpy as np
+import torch
+import torchvision.transforms as T
+import torchvision.transforms.functional as F
+from PIL import Image, ImageDraw, ImageFilter
+from pycocotools.coco import COCO
+from pycocotools.mask import encode, toBbox
+from torchvision.datasets.vision import VisionDataset
 
 
 def polygon_to_mask(polygon, target_size):
@@ -24,11 +23,12 @@ def polygon_to_mask(polygon, target_size):
 
 
 class SpineDetection(object):
-    def __init__(self, root, annFile, target_size,
-                 # max_objects=10,
-                 bg_class=False,
-                 multiscale=True):
-        from pycocotools.coco import COCO
+    def __init__(
+        self, root: str, annFile: str, target_size: Tuple[int, int, int],
+        # max_objects=10,
+        bg_class: Optional[bool]=False,
+        multiscale: Optional[bool]=True
+    ):
         self.coco = COCO(annFile)
         self.ids = list(sorted(self.coco.imgs.keys()))
         self.root = root

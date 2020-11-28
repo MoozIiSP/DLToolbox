@@ -1,0 +1,17 @@
+defaults:
+  - dataset: kaggle_dogs_vs_cats
+  - trainer: default_trainer
+  - training: default_training
+  - logging: tensorboard
+  - optimizer: adamw
+  - scheduler: step
+  - model: basic_resnet
+  - callbacks: callbacks
+  - private: custom
+  - data: data
+  - augmentation: basic_augs
+
+general:
+  save_dir: logs/
+  workspace: mooziisp
+  project_name: kaggle_dogs_vs_cats

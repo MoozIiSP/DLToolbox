@@ -1,21 +1,16 @@
 import math
 import sys, os
 import time
-
-
-
-sys.path.append("/home/aliclotho/GitRepos/DLToolbox/")
-
 import torch
 import torch.optim as optim
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
-from toolbox.application.Detection.YOLO.models.yolo import *
-from toolbox.application.Detection.YOLO.models.backbone import resnet, vgg, mobilenet, densenet
-from toolbox.application.Detection.YOLO.models.darknet import darknet53
-from toolbox.application.Detection.YOLO.datasets import custom
-from toolbox.application.Detection.YOLO.models import *
-from toolbox.application.Detection.YOLO.utils.utils import *
+from .models.yolo import *
+from .models.backbone import resnet, vgg, mobilenet, densenet
+from .models.darknet import darknet53
+from .datasets import custom
+from .models import *
+from .utils.utils import *
 from toolbox.core.utils import AverageMeter, arch_stat
 
 if os.path.exists('/home/mooziisp'):

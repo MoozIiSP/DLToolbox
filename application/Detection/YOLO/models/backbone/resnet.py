@@ -5,11 +5,11 @@ from torchvision.models.resnet import BasicBlock, Bottleneck, model_urls
 from torchvision.models.utils import load_state_dict_from_url
 
 
-class ResnetBackbone(ResNet):
+class ResNetBackbone(ResNet):
     def __init__(self, block, layers, num_classes=1000, zero_init_residual=False,
                  groups=1, width_per_group=64, replace_stride_with_dilation=None,
                  norm_layer=None):
-        super(ResnetBackbone, self).__init__(
+        super(ResNetBackbone, self).__init__(
             block, layers, num_classes=1000, zero_init_residual=False,
             groups=1, width_per_group=64, replace_stride_with_dilation=None,
             norm_layer=None)
@@ -35,7 +35,7 @@ class ResnetBackbone(ResNet):
 
 
 def _resnet(arch, block, layers, pretrained, progress, **kwargs):
-    model = ResnetBackbone(block, layers, **kwargs)
+    model = ResNetBackbone(block, layers, **kwargs)
     if pretrained:
         state_dict = load_state_dict_from_url(model_urls[arch],
                                                             progress=progress)

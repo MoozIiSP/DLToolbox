@@ -1,0 +1,77 @@
+general:
+  save_dir: logs/
+  workspace: erlemar
+  project_name: bdci
+dataset:
+  class_name: src.utils.dataset.BDCIDataset
+trainer:
+  gpus: 1
+  distributed_backend: dp
+  accumulate_grad_batches: 1
+  profiler: false
+  max_epochs: 2
+training:
+  lr: 0.0001
+  metric: main_score
+  seed: 666
+  debug: true
+logging:
+  log: true
+optimizer:
+  class_name: torch.optim.AdamW
+  params:
+    lr: ${training.lr}
+    weight_decay: 0.001
+scheduler:
+  class_name: torch.optim.lr_scheduler.ReduceLROnPlateau
+  params:
+    mode: min
+    factor: 0.9
+    patience: 15
+model:
+  backbone:
+    class_name: src.models.unet.UNet
+    params:
+      in_channels: 1
+      num_classes: 7
+      depth: 5
+      wf: 6
+      padding: false
+      batch_norm: false
+      up_mode: upconv
+callbacks:
+  early_stopping:
+    class_name: pl.callbacks.EarlyStopping
+    params:
+      monitor: ${training.metric}
+      patience: 50
+      mode: min
+  model_checkpoint:
+    class_name: pl.callbacks.ModelCheckpoint
+    params:
+      monitor: ${training.metric}
+      save_top_k: 1
+      filepath: saved_models/
+private:
+  comet_api: fOmVZaafsPuJ6OP3myaJUd4fC
+data:
+  folder_path: data/
+  num_workers: 0
+  batch_size: 2
+augmentation:
+  train:
+    augs:
+    - class_name: albumentations.Flip
+      params:
+        p: 0.6
+    - class_name: albumentations.RandomBrightnessContrast
+      params:
+        p: 0.6
+    - class_name: albumentations.pytorch.transforms.ToTensorV2
+      params:
+        p: 1.0
+  valid:
+    augs:
+    - class_name: albumentations.pytorch.transforms.ToTensorV2
+      params:
+        p: 1.0

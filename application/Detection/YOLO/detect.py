@@ -10,13 +10,13 @@ import numpy as np
 import torch
 from PIL import Image
 from matplotlib.ticker import NullLocator
-from toolbox.application.Detection.YOLO.models.yolo import *
-from toolbox.application.Detection.YOLO.models.darknet import darknet53
+from .models.yolo import *
+from .models.darknet import darknet53
 # from torchvision.ops import nms
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
-from toolbox.application.Detection.YOLO.datasets import custom
-from toolbox.application.Detection.YOLO.utils.utils import *
+from .datasets import custom
+from .utils.utils import *
 
 
 if __name__ == '__main__':
