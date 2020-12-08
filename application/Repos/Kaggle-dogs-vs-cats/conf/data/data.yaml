@@ -1,5 +1,0 @@
-# @package _group_
-trainval_path: data/trainval
-test_path: data/test
-num_workers: 4
-batch_size: 32

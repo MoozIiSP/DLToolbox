@@ -1,6 +1,0 @@
-# @package _group_
-backbone:
-  class_name: torchvision.models.resnet18
-  params:
-    pretained: False
-  
